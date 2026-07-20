@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/back_gobal_info"
+        app:layout_constraintEnd_toEndOf="@id/back_gobal_info"
+        app:layout_constraintStart_toStartOf="@id/back_gobal_info"
+        android:layout_marginBottom="20dp"
+        android:text="23/11/1982"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/p_p"
+        />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/back_gobal_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/back_p_p"
+        >
+
+        <TextView
+            android:id="@+id/d_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dear,"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Your name"
+            app:layout_constraintTop_toTopOf="@id/d_text"
+            app:layout_constraintBottom_toBottomOf="@id/d_text"
+            app:layout_constraintStart_toEndOf="@id/d_text"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            android:textColorHint="@color/ele_color"
+            android:maxLength="7"
+            />
+
+
+        <TextView
+            android:id="@+id/t_info"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/d_text"
+            app:layout_constraintStart_toStartOf="@id/d_text"
+            android:text="Arstotzka hires you to manage our borders"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            />
+
+        <TextView
+            android:id="@+id/d_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/t_info"
+            app:layout_constraintStart_toStartOf="@id/t_info"
+            android:text="Day"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Game day"
+            app:layout_constraintTop_toTopOf="@id/d_info"
+            app:layout_constraintBottom_toBottomOf="@id/d_info"
+            app:layout_constraintStart_toEndOf="@id/d_info"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            android:textColorHint="@color/ele_color"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/d_info"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/d_info"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="Glory to Arstotzka"
+            android:textSize="20dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/p_p"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/sign_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pixel_sign"
+        app:layout_constraintTop_toBottomOf="@id/back_gobal_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sign_but"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/nowi"
+        android:fontFamily="@font/pixel"
+        android:text="A Nowi Product :)"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

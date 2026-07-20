@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="green_p_p">#566856</color>
+    <color name="yellow_p_p">#B9A000</color>
+    <color name="back_p_p">#E8EAC4</color>
+    <color name="red_warning">#900505</color>
+    <color name="title_color">#787A66</color>
+    <color name="text_color">#544546</color>
+    <color name="back_ele">#2F1010</color>
+    <color name="ele_color">#9EA086</color>
+    <color name="back_ele_color">#352A2A</color>
+
+    <color name="nowi">#5898df</color>
+
+</resources>
