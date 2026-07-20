@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
 
         val main = findViewById<ConstraintLayout>(R.id.main)
 

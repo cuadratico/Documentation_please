@@ -30,7 +30,6 @@ class noteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_note)
-        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
 
         val note = findViewById<AppCompatEditText>(R.id.note)
         val delete_note = findViewById<ShapeableImageView>(R.id.delete_note)
