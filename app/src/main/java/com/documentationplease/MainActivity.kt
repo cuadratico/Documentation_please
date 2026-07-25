@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
@@ -30,6 +32,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.coroutines.delay
@@ -49,7 +52,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.horizontal_activity_main)
+        } else {
+            setContentView(R.layout.activity_main)
+        }
 
         val main = findViewById<ConstraintLayout>(R.id.main)
 
@@ -206,7 +214,7 @@ class MainActivity : AppCompatActivity() {
             val sign_but = view.findViewById<ShapeableImageView>(R.id.sign_but)
 
             sign_but.setOnClickListener {
-                if (name_input.text!!.isNotEmpty() && day_input.text!!.isNotEmpty() && day_input.text.toString().toInt() <= 31) {
+                if (name_input.text!!.isNotEmpty() && day_input.text!!.isNotEmpty() && day_input.text.toString().toInt() <= 31 && day_input.text.toString().toInt() >= 1) {
                     db.add(db_values(name_input.text.toString(), day_input.text.toString(), ""))
                     main.visibility = View.VISIBLE
 
@@ -256,11 +264,18 @@ class MainActivity : AppCompatActivity() {
 
             val skip_day = view.findViewById<ConstraintLayout>(R.id.skip_day)
 
+            var day = "1"
+
             edit_day_ani.addTextChangedListener {
-                if (it.toString().isNotEmpty() && it.toString().toInt() > 31){
-                    edit_day_ani.setText("31")
-                    edit_day_ani.setSelection(edit_day_ani.text.length)
-                    Toast.makeText(this, "The game only lasts 31 days", Toast.LENGTH_SHORT).show()
+                if (it.toString().isNotEmpty()) {
+                    if (it.toString().toInt() > 31 || it.toString().toInt() < 1) {
+                        edit_day_ani.setText(day)
+                        edit_day_ani.setSelection(edit_day_ani.length())
+                        Toast.makeText(this, "The day is incorrect", Toast.LENGTH_SHORT).show()
+                    } else {
+                        day = it.toString()
+
+                    }
                 }
             }
 
@@ -302,19 +317,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             skip_day.setOnClickListener {
-                if (day_ani.text.toString().toInt() <= 31) {
-
                     if (mode == skip_mode.edit) {
-                        edit_day_ani.visibility = View.INVISIBLE
-                        day_ani.visibility = View.VISIBLE
-                        day_ani.text = edit_day_ani.text.toString()
+                        if (edit_day_ani.text.isNotEmpty()) {
+                            edit_day_ani.visibility = View.INVISIBLE
+                            day_ani.visibility = View.VISIBLE
+                            day_ani.text = edit_day_ani.text.toString()
+
+                            day_ani.startAnimation(animation)
+                        } else {
+                            Toast.makeText(this, "You haven't specified any day", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        day_ani.startAnimation(animation)
                     }
-
-                    day_ani.startAnimation(animation)
-
-                } else {
-                    Toast.makeText(this, "The game only lasts 31 days", Toast.LENGTH_SHORT).show()
-                }
             }
 
             dialog.show()
@@ -336,6 +351,7 @@ class MainActivity : AppCompatActivity() {
 
             }.show()
         }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
